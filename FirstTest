@@ -1,0 +1,29 @@
+#include<iostream>
+#include<cmath>
+#include<iomanip>
+#include<stdio.h>
+using namespace std;
+void hanoi(char x, char y, char z, int num);
+int main() 
+{
+	//要求一开始在A上，最后转移到C上，以B为过渡
+	hanoi('A', 'B', 'C', 3);
+}
+//先分析问题，分三个步骤走：
+//①将num-1个盘子从A转移到B上
+//②将第num个盘子从A转移到C上
+//③将num-1个盘子从B转移到C上
+//hanoi()函数表示将n个盘子从第一个参数转移到第三个参数上
+void hanoi(char x, char y, char z, int num) 
+{
+	if (num == 1)
+		cout << x << "->" << z << endl;
+	else 
+	{
+		hanoi(x, z, y, num - 1);
+		cout << x << "->" << z<<endl;
+		hanoi(y, x, z,num-1);
+	}
+}
+
+
